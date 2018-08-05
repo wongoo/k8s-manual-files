@@ -3,8 +3,8 @@
 
 for NODE in $K8S_MASTERS; do
     echo "--- $NODE ---"
-    cp kubelet-csr.json kubelet-$NODE-csr.json;
-    sed -i "s/\$NODE/$NODE/g" kubelet-$NODE-csr.json;
+    cp pki/kubelet-csr.json pki/kubelet-$NODE-csr.json;
+    sed -i "s/\$NODE/$NODE/g" pki/kubelet-$NODE-csr.json;
 
     cfssl gencert \
       -ca=${PKI_DIR}/ca.pem \
@@ -14,7 +14,7 @@ for NODE in $K8S_MASTERS; do
       -profile=kubernetes \
       pki/kubelet-$NODE-csr.json | cfssljson -bare ${PKI_DIR}/kubelet-$NODE;
 
-    rm -f kubelet-$NODE-csr.json
+    rm -f pki/kubelet-$NODE-csr.json
 done
 
 # 將 kubelet 憑證複製到所有master節點上：

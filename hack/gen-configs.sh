@@ -24,6 +24,7 @@ ETCD_SERVERS=$(echo ${ETCD_SERVERS} | sed 's/.$//')
 
 # generating config
 for NODE in ${NODES}; do
+  echo "---------$NODE----------"
   IP=$(ssh ${NODE} "ip route get 8.8.8.8" | awk '{print $NF; exit}')
   ssh ${NODE} "sudo mkdir -p /etc/etcd /etc/haproxy"
 
@@ -36,5 +37,12 @@ for NODE in ${NODES}; do
   # haproxy
   scp ${HAPROXY_TPML} ${NODE}:/etc/haproxy/haproxy.cfg 2>&1 > /dev/null
   ssh ${NODE} "sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg"
+
   echo "${RED}${NODE}${NC} config generated..."
+
+  echo "-----/etc/etcd/config.yml------"
+  ssh ${NODE} "cat /etc/etcd/config.yml"
+
+  echo "-----/etc/haproxy/haproxy.cfg------"
+  ssh ${NODE} "cat /etc/haproxy/haproxy.cfg"
 done

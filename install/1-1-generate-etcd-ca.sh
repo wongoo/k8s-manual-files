@@ -8,10 +8,10 @@ cfssl gencert -initca etcd-ca-csr.json | cfssljson -bare ${ETCD_PKI_DIR}/etcd-ca
 cfssl gencert \
   -ca=${ETCD_PKI_DIR}/etcd-ca.pem \
   -ca-key=${ETCD_PKI_DIR}/etcd-ca-key.pem \
-  -config=ca-config.json \
+  -config=pki/ca-config.json \
   -hostname=127.0.0.1,10.204.0.5,10.204.0.6,10.204.0.8 \
   -profile=kubernetes \
-  etcd-csr.json | cfssljson -bare ${ETCD_PKI_DIR}/etcd
+  pki/etcd-csr.json | cfssljson -bare ${ETCD_PKI_DIR}/etcd
 
 ls ${ETCD_PKI_DIR}
 

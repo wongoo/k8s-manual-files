@@ -4,9 +4,9 @@
 cfssl gencert \
   -ca=${PKI_DIR}/ca.pem \
   -ca-key=${PKI_DIR}/ca-key.pem \
-  -config=ca-config.json \
+  -config=pki/ca-config.json \
   -profile=kubernetes \
-  scheduler-csr.json | cfssljson -bare ${PKI_DIR}/scheduler
+  pki/scheduler-csr.json | cfssljson -bare ${PKI_DIR}/scheduler
 
 kubectl config set-cluster kubernetes \
     --certificate-authority=${PKI_DIR}/ca.pem \

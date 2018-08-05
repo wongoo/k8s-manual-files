@@ -12,10 +12,10 @@ ls ${PKI_DIR}/ca*
 cfssl gencert \
   -ca=${PKI_DIR}/ca.pem \
   -ca-key=${PKI_DIR}/ca-key.pem \
-  -config=ca-config.json \
+  -config=pki/ca-config.json \
   -hostname=10.96.0.1,10.204.0.99,127.0.0.1,kubernetes.default \
   -profile=kubernetes \
-  apiserver-csr.json | cfssljson -bare ${PKI_DIR}/apiserver
+  pki/apiserver-csr.json | cfssljson -bare ${PKI_DIR}/apiserver
 
 ls ${PKI_DIR}/apiserver*
 # /etc/kubernetes/pki/apiserver.csr  /etc/kubernetes/pki/apiserver-key.pem  /etc/kubernetes/pki/apiserver.pem

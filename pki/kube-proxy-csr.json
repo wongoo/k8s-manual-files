@@ -6,9 +6,9 @@
   },
   "names": [
     {
-      "C": "TW",
-      "ST": "Taipei",
-      "L": "Taipei",
+      "C": "CN",
+      "ST": "Beijing",
+      "L": "Beijing",
       "O": "system:kube-proxy",
       "OU": "Kubernetes-manual"
     }

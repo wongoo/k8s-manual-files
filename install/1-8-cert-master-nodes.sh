@@ -9,10 +9,10 @@ for NODE in $K8S_MASTERS; do
     cfssl gencert \
       -ca=${PKI_DIR}/ca.pem \
       -ca-key=${PKI_DIR}/ca-key.pem \
-      -config=ca-config.json \
+      -config=pki/ca-config.json \
       -hostname=$NODE \
       -profile=kubernetes \
-      kubelet-$NODE-csr.json | cfssljson -bare ${PKI_DIR}/kubelet-$NODE;
+      pki/kubelet-$NODE-csr.json | cfssljson -bare ${PKI_DIR}/kubelet-$NODE;
 
     rm -f kubelet-$NODE-csr.json
 done

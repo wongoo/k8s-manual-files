@@ -19,3 +19,5 @@ for NODE in $K8S_MASTERS; do
     done
 done
     
+# for client mange
+cp /etc/kubernetes/admin.conf ~/.kube/config

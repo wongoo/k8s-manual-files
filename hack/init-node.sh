@@ -9,7 +9,10 @@ set -eu
 : ${WITH_CFSSL:="false"}
 
 # install docker
+yum -y remove docker docker-common docker-selinux docker-engine
 curl -fsSL "https://get.docker.com/" | sh
+
+systemctl enable docker
 
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.ipv4.ip_forward = 1

@@ -40,9 +40,9 @@ for NODE in ${NODES}; do
 
   echo "${RED}${NODE}${NC} config generated..."
 
-  echo "-----/etc/etcd/config.yml------"
-  ssh ${NODE} "cat /etc/etcd/config.yml"
+  # echo "-----/etc/etcd/config.yml------"
+  # ssh ${NODE} "cat /etc/etcd/config.yml"
 
-  echo "-----/etc/haproxy/haproxy.cfg------"
-  ssh ${NODE} "cat /etc/haproxy/haproxy.cfg"
+  # echo "-----/etc/haproxy/haproxy.cfg------"
+  # ssh ${NODE} "cat /etc/haproxy/haproxy.cfg"
 done

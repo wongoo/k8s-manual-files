@@ -338,3 +338,31 @@ for NODE in $K8S_MASTERS; do
 done
 
 ```
+
+export NODES=$K8S_MASTERS
+/hack/gen-configs.sh
+
+export NODES=$K8S_MASTERS
+/hack/gen-manifests.sh
+
+for NODE in $K8S_MASTERS; do
+    echo "--- $NODE ---"
+    ssh ${NODE} "mkdir -p /var/lib/kubelet /var/log/kubernetes /var/lib/etcd /etc/systemd/system/kubelet.service.d"
+    scp master/var/lib/kubelet/config.yml ${NODE}:/var/lib/kubelet/config.yml
+    scp master/systemd/kubelet.service ${NODE}:/lib/systemd/system/kubelet.service
+    scp master/systemd/10-kubelet.conf ${NODE}:/etc/systemd/system/kubelet.service.d/10-kubelet.conf
+done
+
+
+for NODE in $K8S_MASTERS; do
+    ssh ${NODE} "systemctl enable kubelet.service && systemctl start kubelet.service"
+done
+
+
+for NODE in $K8S_MASTERS; do
+    ssh ${NODE} "systemctl enable kubelet.service && systemctl restart kubelet.service"
+done
+
+watch netstat -ntlp
+# 如果启动失败查看详细信息
+# journalctl -xef

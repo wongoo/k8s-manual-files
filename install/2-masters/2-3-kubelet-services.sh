@@ -10,5 +10,7 @@ for NODE in $K8S_MASTERS; do
 done
 
 for NODE in $K8S_MASTERS; do
+    ssh ${NODE} "rm -f /etc/kubernetes/manifests/haproxy.yml /etc/kubernetes/manifests/keepalived.yml"
+    ssh ${NODE} "systemctl enable docker && systemctl start docker"
     ssh ${NODE} "systemctl enable kubelet.service && systemctl start kubelet.service"
 done

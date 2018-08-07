@@ -339,6 +339,8 @@ done
 
 ```
 
+start kubelet and pod services(etcd,apiserver,controller-manager,scheduler):
+```
 export NODES=$K8S_MASTERS
 hack/gen-configs.sh
 
@@ -358,11 +360,9 @@ for NODE in $K8S_MASTERS; do
     ssh ${NODE} "systemctl enable kubelet.service && systemctl start kubelet.service"
 done
 
-
-for NODE in $K8S_MASTERS; do
-    ssh ${NODE} "systemctl enable kubelet.service && systemctl restart kubelet.service"
-done
-
 watch netstat -ntlp
 # 如果启动失败查看详细信息
 # journalctl -xef
+
+```
+

@@ -64,3 +64,4 @@ for NODE in ${NODES}; do
   echo "${RED}${NODE}${NC} manifests generated..."
   i=$((i+1))
 done
+

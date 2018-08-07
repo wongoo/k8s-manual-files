@@ -21,7 +21,6 @@ spec:
       - --allow-privileged=true
       - --bind-address=0.0.0.0
       - --secure-port=5443
-      - --insecure-port=0
       - --advertise-address=${ADVERTISE_VIP}
       - --service-cluster-ip-range=10.96.0.0/12
       - --service-node-port-range=30000-32767

@@ -33,8 +33,6 @@ spec:
     matchLabels:
       k8s-app: kube-proxy
   template:
-    annotations:
-      scheduler.alpha.kubernetes.io/critical-pod: ""
     metadata:
       labels:
         k8s-app: kube-proxy
@@ -50,7 +48,7 @@ spec:
       hostNetwork: true
       containers:
       - name: kube-proxy
-        image: k8s.gcr.io/kube-proxy-amd64:v1.11.0
+        image: k8s.gcr.io/kube-proxy-amd64:v1.11.1
         command:
         - /usr/local/bin/kube-proxy
         - --config=/var/lib/kube-proxy/config.conf

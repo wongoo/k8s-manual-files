@@ -29,8 +29,8 @@ sudo sed '/swap.img/d' -i /etc/fstab
 
 # download cni bin
 sudo mkdir -p /opt/cni/bin && cd /opt/cni/bin
-CNI_URL="https://github.com/containernetworking/plugins/releases/download"
-sudo wget -qO- --show-progress "${CNI_URL}/v0.7.1/cni-plugins-amd64-v0.7.1.tgz" | tar -zx
+export CNI_URL="https://github.com/containernetworking/plugins/releases/download"
+sudo wget -qO --show-progress "${CNI_URL}/v0.7.1/cni-plugins-amd64-v0.7.1.tgz" | tar -zx
 
 # download kubelet and kubectl
 export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/linux/amd64

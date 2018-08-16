@@ -35,8 +35,13 @@ for NODE in ${NODES}; do
                sed -i 's/\${ETCD_SERVERS}/${ETCD_SERVERS}/g' /etc/etcd/config.yml;"
 
   # haproxy
-  scp ${HAPROXY_TPML} ${NODE}:/etc/haproxy/haproxy.cfg 2>&1 > /dev/null
-  ssh ${NODE} "sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg"
+  # --------> only install haproxy on client instead of master nodes 
+  # scp ${HAPROXY_TPML} ${NODE}:/etc/haproxy/haproxy.cfg 2>&1 > /dev/null
+  # ssh ${NODE} "sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg"
+
+  cp ${HAPROXY_TPML} /etc/haproxy/haproxy.cfg 2>&1 > /dev/null
+  sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg
+
 
   echo "${RED}${NODE}${NC} config generated..."
 

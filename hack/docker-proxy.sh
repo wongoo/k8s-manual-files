@@ -1,11 +1,11 @@
 
-docker pull quay.io/coreos/etcd:v3.3.8
-docker pull docker.io/haproxy:1.7-alpine
+docker pull quay.io/coreos/etcd:v3.3.9
+docker pull haproxy:1.8-alpine
 docker pull docker.io/osixia/keepalived:1.4.5
 
-# docker pull k8s.gcr.io/kube-apiserver-amd64:v1.11.1
-# docker pull k8s.gcr.io/kube-controller-manager-amd64:v1.11.1
-# docker pull k8s.gcr.io/kube-scheduler-amd64:v1.11.1
+# docker pull k8s.gcr.io/kube-apiserver-amd64:v1.12.0
+# docker pull k8s.gcr.io/kube-controller-manager-amd64:v1.12.0
+# docker pull k8s.gcr.io/kube-scheduler-amd64:v1.12.0
 
 
 # 注：如果你会科学上网，可以不做这一步
@@ -17,15 +17,15 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause:3.1
 
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.11.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.11.1 k8s.gcr.io/kube-apiserver-amd64:v1.11.1
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.0 k8s.gcr.io/kube-apiserver-amd64:v1.12.0
 
 
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.11.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.11.1 k8s.gcr.io/kube-controller-manager-amd64:v1.11.1
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.12.0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.12.0 k8s.gcr.io/kube-controller-manager-amd64:v1.12.0
 
 
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.11.1
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.11.1 k8s.gcr.io/kube-scheduler-amd64:v1.11.1
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.0 k8s.gcr.io/kube-scheduler-amd64:v1.12.0
 
 docker images

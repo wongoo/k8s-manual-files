@@ -28,4 +28,8 @@ docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-m
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.0
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.0 k8s.gcr.io/kube-scheduler-amd64:v1.12.0
 
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0 k8s.gcr.io/kube-proxy-amd64:v1.12.0
+
+
 docker images

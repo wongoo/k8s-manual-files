@@ -13,7 +13,7 @@ spec:
   priorityClassName: system-cluster-critical
   containers :
   - name: kube-apiserver
-    image: k8s.gcr.io/kube-apiserver-amd64:v1.11.1
+    image: k8s.gcr.io/kube-apiserver-amd64:v1.12.0
     command:
       - kube-apiserver
       - --v=0

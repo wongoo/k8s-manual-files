@@ -13,13 +13,13 @@ done
 #-----------------------
 # start all master nodes
 for NODE in $K8S_MASTERS; do
-    ssh ${NODE} "systemctl enable docker && systemctl start docker"
-    ssh ${NODE} "systemctl enable kubelet.service && systemctl start kubelet.service"
+    ssh ${NODE} "systemctl enable docker"
+    ssh ${NODE} "systemctl enable kubelet.service"
 done
 
 for NODE in $K8S_MASTERS; do
-    ssh ${NODE} "systemctl enable docker && systemctl start docker"
-    ssh ${NODE} "systemctl enable kubelet.service && systemctl start kubelet.service"
+    ssh ${NODE} "systemctl start docker"
+    ssh ${NODE} "systemctl start kubelet.service"
 done
 
 for NODE in $K8S_MASTERS; do

@@ -1,6 +1,7 @@
+
 # Initial Installation Envirionment
 
-api server: 10.104.113.160
+client: 10.104.113.160
 
 use `ssh-keygen` generate `id_rsa`, `id_rsa.pub`
 
@@ -12,9 +13,10 @@ config /etc/hosts on all hosts(centos):
 10.104.113.163 k8s-m3
 10.104.113.164 k8s-n1
 10.104.113.165 k8s-n2
+10.104.113.160 k8s-n3
 ```
 
-vip: 10.104.113.160 k8s-master
+vip: 10.104.113.166 k8s-master
 
 add content of `id_rsa.pub` into file `/root/.ssh/authorized_keys` of all hosts.
 
@@ -33,7 +35,7 @@ watch netstat -ntlp
 ## add vip manually
 
 ```
-ifconfig eth0:0 10.104.113.160 netmask 255.255.255.0 up
+ifconfig eth0:0 10.104.113.166 netmask 255.255.255.0 up
 # ifconfig eth0:0 down
 ```
 

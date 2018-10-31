@@ -6,7 +6,7 @@
 set -eu
 
 : ${NODES:="k8s-m1 k8s-m2 k8s-m3"}
-: ${ADVERTISE_VIP:="10.204.0.4"}
+: ${ADVERTISE_VIP:="10.104.113.166"}
 : ${MANIFESTS_TPML_DIR:="master/manifests"}
 : ${ENCRYPT_TPML_DIR:="master/encryption"}
 : ${ADUIT_TPML_DIR:="master/audit"}
@@ -40,15 +40,16 @@ for NODE in ${NODES}; do
   done
 
   # configure keepalived
-  NIC=$(ssh ${NODE} "ip route get 8.8.8.8" | awk '{print $5; exit}')
-  PRIORITY=150
-  if [ ${i} -eq 0 ]; then
-    PRIORITY=100
-  fi
-  ssh ${NODE} "sed -i 's/\${ADVERTISE_VIP}/${ADVERTISE_VIP}/g' ${MANIFESTS_PATH}/keepalived.yml;
-               sed -i 's/\${ADVERTISE_VIP_NIC}/${NIC}/g' ${MANIFESTS_PATH}/keepalived.yml;
-               sed -i 's/\${UNICAST_PEERS}/${UNICAST_PEERS}/g' ${MANIFESTS_PATH}/keepalived.yml;
-               sed -i 's/\${PRIORITY}/${PRIORITY}/g' ${MANIFESTS_PATH}/keepalived.yml"
+  # ------------> NOTE: keepalived is not need for no haproxy service 
+  # NIC=$(ssh ${NODE} "ip route get 8.8.8.8" | awk '{print $5; exit}')
+  # PRIORITY=150
+  # if [ ${i} -eq 0 ]; then
+  #   PRIORITY=100
+  # fi
+  # ssh ${NODE} "sed -i 's/\${ADVERTISE_VIP}/${ADVERTISE_VIP}/g' ${MANIFESTS_PATH}/keepalived.yml;
+  #              sed -i 's/\${ADVERTISE_VIP_NIC}/${NIC}/g' ${MANIFESTS_PATH}/keepalived.yml;
+  #              sed -i 's/\${UNICAST_PEERS}/${UNICAST_PEERS}/g' ${MANIFESTS_PATH}/keepalived.yml;
+  #              sed -i 's/\${PRIORITY}/${PRIORITY}/g' ${MANIFESTS_PATH}/keepalived.yml"
 
   # configure kue-apiserver
   ssh ${NODE} "sed -i 's/\${ADVERTISE_VIP}/${ADVERTISE_VIP}/g' ${MANIFESTS_PATH}/kube-apiserver.yml;

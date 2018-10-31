@@ -12,7 +12,8 @@ export K8S_VIP=10.104.113.160
 #  Cluster IP 的 Kubernetes 端點
 export K8S_CLUSTER_IP=10.96.0.1
 
-export K8S_VERSION=v1.11.1
+export K8S_VERSION=v1.12.0
+
 
 export K8S_MASTERS="k8s-m1 k8s-m2 k8s-m3"
 export K8S_NODES="k8s-n1 k8s-n2"

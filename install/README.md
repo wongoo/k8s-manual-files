@@ -1,5 +1,5 @@
 
-prepare:
+# prepare:
 ```
 source install/env.sh
 
@@ -10,7 +10,7 @@ install/0-preparing/0-4-i0-preparing/nstall-cfssl.sh
 
 ```
 
-generate config:
+# generate config:
 ```
 source install/env.sh
 
@@ -26,7 +26,7 @@ install/1-gen-cert/1-9-cert-service-account.sh
 install/1-gen-cert/1-10-cert-copy.sh
 ```
 
-install master services:
+# install master services:
 ```
 source install/env.sh
 
@@ -36,7 +36,7 @@ install/2-masters/2-3-kubelet-services.sh
 ```
 
 
-bootstrap:
+# bootstrap:
 ```
 source install/env.sh
 

@@ -7,3 +7,4 @@ cfssl gencert \
   -config=pki/ca-config.json \
   -profile=kubernetes \
   pki/front-proxy-client-csr.json | cfssljson -bare ${PKI_DIR}/front-proxy-client
+

@@ -1,6 +1,8 @@
 #!/bin/sh
 #
 
+#------------------------------
+# 产生各个master 节点证书
 for NODE in $K8S_MASTERS; do
     echo "--- $NODE ---"
     cp pki/kubelet-csr.json pki/kubelet-$NODE-csr.json;

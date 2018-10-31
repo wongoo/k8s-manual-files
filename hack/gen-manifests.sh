@@ -34,7 +34,7 @@ UNICAST_PEERS=$(echo ${UNICAST_PEERS} | sed 's/,$//')
 # generate manifests
 i=0
 for NODE in ${NODES}; do
-  ssh ${NODE} "sudo mkdir -p ${MANIFESTS_PATH} ${ENCRYPT_PATH} ${ADUIT_PATH}"
+  ssh ${NODE} "mkdir -p ${MANIFESTS_PATH} ${ENCRYPT_PATH} ${ADUIT_PATH}"
   for FILE in ${FILES}; do
     scp ${MANIFESTS_TPML_DIR}/${FILE} ${NODE}:${MANIFESTS_PATH}/${FILE} 2>&1 > /dev/null
   done

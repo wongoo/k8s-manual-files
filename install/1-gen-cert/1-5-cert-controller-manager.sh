@@ -6,7 +6,7 @@ cfssl gencert \
   -ca-key=${PKI_DIR}/ca-key.pem \
   -config=pki/ca-config.json \
   -profile=kubernetes \
-  pki/controller-manager-csr.json | cfssljson -bare ${PKI_DIR}/controller-manager
+  pki/admin-csr.json | cfssljson -bare ${PKI_DIR}/controller-manager
 
 kubectl config set-cluster kubernetes \
     --certificate-authority=${PKI_DIR}/ca.pem \

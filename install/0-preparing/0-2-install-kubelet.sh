@@ -5,10 +5,10 @@ export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/${K8S_
 curl -O ${KUBE_URL}/kubelet 
 curl -O ${KUBE_URL}/kubectl
 
+chmod +x kube*
+
 cp kubelet /usr/local/bin/kubelet
 cp kubectl /usr/local/bin/kubectl
-
-chmod +x /usr/local/bin/kube*
 
 for NODE in $K8S_ALL; do
     scp kubelet $NODE:/usr/local/bin/kubelet

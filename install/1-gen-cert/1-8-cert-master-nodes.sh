@@ -19,6 +19,7 @@ for NODE in $K8S_MASTERS; do
     rm -f pki/kubelet-$NODE-csr.json
 done
 
+# -------------------------------
 # 將 kubelet 憑證複製到所有master節點上：
 for NODE in $K8S_MASTERS; do
     echo "--- $NODE ---"

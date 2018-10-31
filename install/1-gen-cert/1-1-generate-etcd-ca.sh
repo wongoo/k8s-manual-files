@@ -26,7 +26,12 @@ cfssl gencert \
 
 #---------------------------
 ls ${ETCD_PKI_DIR}
+# etcd-ca.csr  etcd-ca-key.pem  etcd-ca.pem  etcd.csr  etcd-key.pem  etcd.pem
 
+# --- 查看证书请求文件信息
+cfssl certinfo -csr ${ETCD_PKI_DIR}/etcd.csr
+# --- 查看etcd证书信息
+cfssl certinfo -cert ${ETCD_PKI_DIR}/etcd.pem
 
 #---------------------------
 # 将etcd相关证书文件复制到各个master节点

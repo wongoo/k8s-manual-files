@@ -15,7 +15,7 @@ NC='\033[0m'
 # generate envs
 ETCD_SERVERS=""
 
-}HAPROXY_BACKENDS=""
+HAPROXY_BACKENDS=""
 for NODE in ${NODES}; do
   IP=$(ssh ${NODE} "ip route get 8.8.8.8" | awk '{print $NF; exit}')
   ETCD_SERVERS="${ETCD_SERVERS}${NODE}=https:\/\/${IP}:2380,"
@@ -53,7 +53,8 @@ done
 
 # ---> for client
 cp ${HAPROXY_TPML} /etc/haproxy/haproxy.cfg 2>&1 > /dev/null
-sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg
+/bin/sh -c "sed -i 's/\${API_SERVERS}/${HAPROXY_BACKENDS}/g' /etc/haproxy/haproxy.cfg"
+
 
 
 

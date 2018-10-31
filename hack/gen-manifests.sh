@@ -6,7 +6,7 @@
 set -eu
 
 : ${NODES:="k8s-m1 k8s-m2 k8s-m3"}
-: ${ADVERTISE_VIP:="10.104.113.166"}
+: ${ADVERTISE_VIP:=${K8S_VIP}}
 : ${MANIFESTS_TPML_DIR:="master/manifests"}
 : ${ENCRYPT_TPML_DIR:="master/encryption"}
 : ${ADUIT_TPML_DIR:="master/audit"}

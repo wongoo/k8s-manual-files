@@ -3,9 +3,12 @@
 
 mkdir -p ${PKI_DIR}
 cfssl gencert -initca pki/ca-csr.json | cfssljson -bare ${PKI_DIR}/ca
+
+# -------------------------
 ls ${PKI_DIR}/ca*
 # /etc/kubernetes/pki/ca.csr  /etc/kubernetes/pki/ca-key.pem  /etc/kubernetes/pki/ca.pem
 
+# ------------------------
 # kubernetes.default為 Kubernetes 系統在 default namespace 自動建立的 API service domain name。
 cfssl gencert \
   -ca=${PKI_DIR}/ca.pem \

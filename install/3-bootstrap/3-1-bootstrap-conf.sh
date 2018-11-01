@@ -25,4 +25,6 @@ kubectl config set-context tls-bootstrap-token-user@kubernetes \
 kubectl config use-context tls-bootstrap-token-user@kubernetes \
     --kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf
 
-
+for NODE in $K8S_MASTERS; do
+    scp /etc/kubernetes/bootstrap-kubelet.conf ${NODE}:/etc/kubernetes/bootstrap-kubelet.conf
+done

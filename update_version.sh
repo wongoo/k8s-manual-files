@@ -5,7 +5,7 @@ FILES="**/*.sh **/*.md **/*.yml **/*.conf"
 sed -i "" -e "s/v1.11.1/v1.12.0/g" $(FILES)
 
 # quay.io/calico/ctl:v3.1.3
-sed -i "" -e "s/v3.1.3/v3.1.3/g" cni/calico/v3.1/calicoctl.yml
+sed -i "" -e "s/v3.1.3/v3.3.0/g" cni/calico/v3.3/calicoctl.yml
 
 # etcd
 # quay.io/coreos/etcd:v3.3.9
@@ -20,7 +20,7 @@ sed -i "" -e "s#haproxy:1.7-alpine#haproxy:1.8-alpine#g"  master/manifests/hapro
 sed -i "" -e "s#keepalived:1.4.5#keepalived:1.4.5#g"  master/manifests/keepalived.yml hack/docker-proxy.sh 
 
 # cni-plugins
-sed -i "" -e "s#v0.6.0#v0.7.1#g" hack/*.sh install/0-preparing/0-3-install-cni.sh
+sed -i "" -e "s#v0.7.2#v0.7.2#g" hack/*.sh install/0-preparing/0-3-install-cni.sh
 
 
 

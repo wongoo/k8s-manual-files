@@ -28,5 +28,12 @@ EOF"
 
     ssh $NODE "swapoff -a && sysctl -w vm.swappiness=0"
     ssh $NODE "sed '/swap.img/d' -i /etc/fstab"
+   
+    ssh $NODE "curl -fsSL https://get.docker.com/ | sh"
+    ssh $NODE "systemctl enable docker && systemctl start docker"
 
+    ssh $NODE "yum install -y conntrack ipvsadm ipset jq iptables curl sysstat libseccomp"
+    ssh $NODE "modprobe ip_vs"
 done
+
+

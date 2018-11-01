@@ -14,7 +14,7 @@ cfssl gencert \
   -ca=${PKI_DIR}/ca.pem \
   -ca-key=${PKI_DIR}/ca-key.pem \
   -config=pki/ca-config.json \
-  -hostname=${K8S_CLUSTER_IP},${K8S_VIP},127.0.0.1,kubernetes.default \
+  -hostname=${K8S_CLUSTER_IP},${K8S_VIP},${K8S_M1_IP},${K8S_M2_IP},${K8S_M3_IP},127.0.0.1,kubernetes.default \
   -profile=kubernetes \
   pki/apiserver-csr.json | cfssljson -bare ${PKI_DIR}/apiserver
 

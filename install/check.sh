@@ -1,5 +1,7 @@
 #!/bin/sh
 
+watch netstat -ntlp
+
 kubectl get csr
 
 kubectl get nodes

@@ -10,9 +10,10 @@
 
 for NODE in ${NODES}; do
    ssh ${NODE} "docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1;
+		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:v1.2.4;
+		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0;
    		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1;
 		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause:3.1;
-		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0;
 		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0 k8s.gcr.io/kube-proxy-amd64:v1.12.0;
 		docker images"
 done

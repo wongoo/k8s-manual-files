@@ -13,7 +13,7 @@ spec:
   priorityClassName: system-cluster-critical
   containers :
   - name: kube-apiserver
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.0
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.2
     command:
       - kube-apiserver
       - --v=0

@@ -18,6 +18,11 @@ spec:
       serviceAccount: kube-proxy
       serviceAccountName: kube-proxy
       priorityClassName: system-node-critical
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
       tolerations:
       - key: CriticalAddonsOnly
         operator: Exists
@@ -26,30 +31,31 @@ spec:
       hostNetwork: true
       containers:
       - name: kube-proxy
-        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.0
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.2
         command:
         - kube-proxy
         - --config=/var/lib/kube-proxy/config.conf
         securityContext:
           privileged: true
         volumeMounts:
-        - mountPath: /var/lib/kube-proxy
-          name: kube-proxy
-        - mountPath: /run/xtables.lock
-          name: xtables-lock
-        - mountPath: /lib/modules
-          name: lib-modules
+        - name: kube-proxy
+          mountPath: /var/lib/kube-proxy
+        - name: xtables-lock
+          mountPath: /run/xtables.lock
+        - name: lib-modules
+          mountPath: /lib/modules
           readOnly: true
       volumes:
-      - configMap:
+      - name: kube-proxy
+        configMap:
           defaultMode: 420
           name: kube-proxy
-        name: kube-proxy
-      - hostPath:
+      - name: xtables-lock
+        hostPath:
           path: /run/xtables.lock
           type: FileOrCreate
-        name: xtables-lock
-      - hostPath:
+      - name: lib-modules
+        hostPath:
           path: /lib/modules
           type: ""
-        name: lib-modules
+

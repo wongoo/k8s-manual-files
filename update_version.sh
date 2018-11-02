@@ -1,8 +1,6 @@
 
-FILES="**/*.sh **/*.md **/*.yml **/*.conf"
-
 # k8s
-sed -i "" -e "s/v1.11.1/v1.12.0/g" $(FILES)
+sed -i "" -e "s/v1.12.2/v1.12.2/g" **/*.sh **/*.md **/*.yml **/*.conf
 
 # quay.io/calico/ctl:v3.1.3
 sed -i "" -e "s/v3.1.3/v3.3.0/g" cni/calico/v3.3/calicoctl.yml

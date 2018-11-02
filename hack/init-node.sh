@@ -33,7 +33,7 @@ export CNI_URL="https://github.com/containernetworking/plugins/releases/download
 sudo wget -qO --show-progress "${CNI_URL}/v0.7.1/cni-plugins-amd64-v0.7.1.tgz" | tar -zx
 
 # download kubelet and kubectl
-export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64
+export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/v1.12.2/bin/linux/amd64
 sudo wget "${KUBE_URL}/kubelet" -O /usr/local/bin/kubelet
 sudo chmod +x /usr/local/bin/kubelet
 

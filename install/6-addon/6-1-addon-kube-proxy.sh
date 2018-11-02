@@ -20,11 +20,13 @@ kubectl apply -f addons/kube-proxy/kube-proxy-cm.yml
 kubectl apply -f addons/kube-proxy/kube-proxy-rbac.yml
 kubectl apply -f addons/kube-proxy/kube-proxy-ds.yml
 
-kubectl describe clusterrolebinding system:node-proxier
+kubectl -n kube-system describe clusterrolebinding system:node-proxier
+kubectl -n kube-system describe ds kube-proxy
 
 # -----------------
 # kubectl delete -f addons/kube-proxy/
 
+kubectl -n kube-system get ds
 kubectl -n kube-system get po -l k8s-app=kube-proxy
 
 # ---> 檢查 log 是否使用 ipvs

@@ -13,7 +13,7 @@ config /etc/hosts on all hosts(centos):
 10.104.113.163 k8s-m3
 10.104.113.164 k8s-n1
 10.104.113.165 k8s-n2
-10.104.113.160 k8s-n3
+10.104.113.160 k8s-vip
 ```
 
 vip: 10.104.113.166 k8s-master

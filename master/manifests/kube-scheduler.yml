@@ -13,7 +13,7 @@ spec:
   priorityClassName: system-cluster-critical
   containers:
   - name: kube-scheduler
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.0
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.2
     command:
       - kube-scheduler
       - --v=0
@@ -34,18 +34,19 @@ spec:
       requests:
         cpu: 100m
     volumeMounts:
-    - mountPath: /etc/kubernetes/pki
-      name: k8s-certs
+    - name: k8s-certs
+      mountPath: /etc/kubernetes/pki
       readOnly: true
-    - mountPath: /etc/kubernetes/scheduler.conf
-      name: kubeconfig
+    - name: kubeconfig
+      mountPath: /etc/kubernetes/scheduler.conf
       readOnly: true
   volumes:
-  - hostPath:
+  - name: k8s-certs
+    hostPath:
       path: /etc/kubernetes/pki
       type: DirectoryOrCreate
-    name: k8s-certs
-  - hostPath:
+  - name: kubeconfig
+    hostPath:
       path: /etc/kubernetes/scheduler.conf
       type: FileOrCreate
-    name: kubeconfig
+    

@@ -13,6 +13,7 @@ export K8S_VIP=10.104.113.160
 export K8S_CLUSTER_IP=10.96.0.1
 
 export K8S_VERSION=v1.12.2
+export K8S_CALICO_VERSION=v3.3
 
 
 export K8S_MASTERS="k8s-m1 k8s-m2 k8s-m3"
@@ -23,7 +24,4 @@ export KUBE_APISERVER=https://$K8S_VIP:6443
 export K8S_DIR=/etc/kubernetes
 export PKI_DIR=${K8S_DIR}/pki
 
-for NODE in $K8S_ALL; do
-    echo $NODE
-done
-
+env |grep K8S

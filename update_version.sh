@@ -1,13 +1,13 @@
 
-# k8s
+# k8s v1.12.2
 sed -i "" -e "s/v1.12.2/v1.12.2/g" **/*.sh **/*.md **/*.yml **/*.conf
 
 # quay.io/calico/ctl:v3.1.3
 sed -i "" -e "s/v3.1.3/v3.3.0/g" cni/calico/v3.3/calicoctl.yml
 
-# etcd
-# quay.io/coreos/etcd:v3.3.9
-sed -i "" -e "s/v3.3.8/v3.3.9/g" master/manifests/etcd.yml hack/docker-proxy.sh
+# etcd 3.2.24
+# check the latest verson: https://kubernetes.io/docs/setup/release/notes/
+sed -i "" -e "s/v3.3.8/v3.2.24/g" master/manifests/etcd.yml hack/docker-images-master.sh
 
 # haproxy:1.8-alpine
 # https://hub.docker.com/_/haproxy/

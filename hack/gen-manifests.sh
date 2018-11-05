@@ -10,7 +10,8 @@ set -eu
 : ${MANIFESTS_TPML_DIR:="master/manifests"}
 : ${ENCRYPT_TPML_DIR:="master/encryption"}
 : ${ADUIT_TPML_DIR:="master/audit"}
-: ${FILES:="etcd.yml haproxy.yml keepalived.yml kube-apiserver.yml kube-controller-manager.yml kube-scheduler.yml"}
+#: ${FILES:="etcd.yml haproxy.yml keepalived.yml kube-apiserver.yml kube-controller-manager.yml kube-scheduler.yml"}
+: ${FILES:="etcd.yml kube-apiserver.yml kube-controller-manager.yml kube-scheduler.yml"}
 
 RED='\033[0;31m'
 NC='\033[0m'

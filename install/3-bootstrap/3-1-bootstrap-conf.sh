@@ -1,10 +1,6 @@
 #!/bin/sh
 #
 
-export TOKEN_ID=$(openssl rand 3 -hex)
-export TOKEN_SECRET=$(openssl rand 8 -hex)
-export BOOTSTRAP_TOKEN=${TOKEN_ID}.${TOKEN_SECRET}
-
 # 建立 bootstrap 使用者的 kubeconfig 檔
 
 kubectl config set-cluster kubernetes \

@@ -11,8 +11,12 @@
 for NODE in ${NODES}; do
    ssh ${NODE} "docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1;
 		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.2.4;
+		docker pull googlecontainer/defaultbackend-amd64:1.4;
 		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.2;
-   		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1;
+		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0;
+		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0;
+		docker pull quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.20.0;
+		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause-amd64:3.1;
 		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/pause:3.1;
 		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.2 k8s.gcr.io/kube-proxy-amd64:v1.12.2;
 		docker images"

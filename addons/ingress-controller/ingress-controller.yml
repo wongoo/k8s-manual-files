@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: default-http-backend
-        image: gcr.io/google_containers/defaultbackend:1.4
+        image: googlecontainer/defaultbackend-amd64:1.4
         livenessProbe:
           httpGet:
             path: /healthz
@@ -57,7 +57,7 @@ spec:
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.16.2
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.20.0
           args:
             - /nginx-ingress-controller
             - --default-backend-service=$(POD_NAMESPACE)/default-http-backend

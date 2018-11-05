@@ -52,14 +52,14 @@ install/3-bootstrap/3-3-bootstrap-rbac.sh
 ```
 install/5-node/5-1-copy-node-config.sh
 install/5-node/5-3-start-nodes.sh
-install/5-node/5-4-node-config.sh
+install/5-node/5-4-nodes-config.sh
 ```
 
 # 6-addon:
 ```
-install/6-andon/6-1-addon-kube-proxy.sh
-install/6-andon/6-2-addon-coredns.sh
-install/6-andon/6-3-addon-network-calico.sh
+install/6-addon/6-1-addon-kube-proxy.sh
+install/6-addon/6-2-addon-coredns.sh
+install/6-addon/6-3-addon-network-calico.sh
 
 ```
 

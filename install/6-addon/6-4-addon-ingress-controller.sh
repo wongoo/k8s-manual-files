@@ -10,11 +10,12 @@ kubectl apply -f addons/ingress-controller
 
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
-
-kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
+# kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
 
 # check service
 kubectl -n ingress-nginx get po,svc
+
+# kubectl -n ingress-nginx logs -f xxx
 
 #  check ingress controller
 curl http://172.22.132.8:80 

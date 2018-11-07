@@ -60,6 +60,7 @@ spec:
           image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.20.0
           args:
             - /nginx-ingress-controller
+            - --v=10
             - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
             - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services

@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: kube-state-metrics
       containers:
-      - image: quay.io/coreos/kube-rbac-proxy:v0.3.1
+              - image: quay.io/coreos/kube-rbac-proxy:latest
         name: kube-rbac-proxy-main
         args:
         - --secure-listen-address=:8443
@@ -33,7 +33,7 @@ spec:
             cpu: 10m
             memory: 20Mi
       - name: kube-rbac-proxy-self
-        image: quay.io/coreos/kube-rbac-proxy:v0.3.1
+        image: quay.io/coreos/kube-rbac-proxy:latest
         args:
         - --secure-listen-address=:9443
         - --upstream=http://127.0.0.1:8082/
@@ -48,7 +48,7 @@ spec:
             cpu: 10m
             memory: 20Mi
       - name: kube-state-metrics
-        image: quay.io/coreos/kube-state-metrics:v1.3.1
+        image: quay.io/coreos/kube-state-metrics:latest
         args:
         - --host=127.0.0.1
         - --port=8081
@@ -62,7 +62,7 @@ spec:
             cpu: 102m
             memory: 180Mi
       - name: addon-resizer
-        image: quay.io/coreos/addon-resizer:1.0
+        image: quay.io/coreos/addon-resizer:latest
         command:
         - /pod_nanny
         - --container=kube-state-metrics

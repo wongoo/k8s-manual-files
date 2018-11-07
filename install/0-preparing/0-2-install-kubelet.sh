@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 
+# darwin/amd64
 export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64
 curl -O ${KUBE_URL}/kubelet 
 curl -O ${KUBE_URL}/kubectl

@@ -18,11 +18,11 @@ spec:
       serviceAccountName: prometheus-operator
       containers:
       - name: prometheus-operator
-        image: quay.io/coreos/prometheus-operator:v0.22.0
+        image: quay.io/coreos/prometheus-operator:latest
         args:
         - --kubelet-service=kube-system/kubelet
-        - --config-reloader-image=quay.io/coreos/configmap-reload:v0.0.1
-        - --prometheus-config-reloader=quay.io/coreos/prometheus-config-reloader:v0.22.0
+        - --config-reloader-image=quay.io/coreos/configmap-reload:latest
+        - --prometheus-config-reloader=quay.io/coreos/prometheus-config-reloader:latest
         ports:
         - containerPort: 8080
           name: http

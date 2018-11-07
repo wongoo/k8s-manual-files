@@ -25,7 +25,7 @@ spec:
         key: node-role.kubernetes.io/master
       containers:
       - name: external-dns
-        image: jnlab/external-dns:v0.6.0
+        image: registry.cn-beijing.aliyuncs.com/acs/external-dns:latest
         env:
         - name: ETCD_URLS
           value: "http://coredns-etcd:2379"

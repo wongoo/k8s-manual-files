@@ -20,7 +20,7 @@ spec:
         key: node-role.kubernetes.io/master
       containers:
       - name: node-exporter
-        image: quay.io/prometheus/node-exporter:v0.15.2
+        image: quay.io/prometheus/node-exporter:latest
         args:
         - --web.listen-address=127.0.0.1:9101
         - --path.procfs=/host/proc
@@ -40,7 +40,7 @@ spec:
           name: sys
           readOnly: false
       - name: kube-rbac-proxy
-        image: quay.io/coreos/kube-rbac-proxy:v0.3.1
+        image: quay.io/coreos/kube-rbac-proxy:latest
         args:
         - --secure-listen-address=:9100
         - --upstream=http://127.0.0.1:9101/

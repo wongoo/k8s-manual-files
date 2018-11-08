@@ -6,8 +6,8 @@
 
 for NODE in ${NODES}; do
    ssh ${NODE} "docker pull quay.io/coreos/etcd:v3.2.24;
-   		docker pull haproxy:1.8-alpine;
-		docker pull osixia/keepalived:1.4.5;
+   		docker pull haproxy:latest;
+		docker pull osixia/keepalived:latest;
 		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.2;
 		docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.2 k8s.gcr.io/kube-apiserver-amd64:v1.12.2;
 		docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.12.2;

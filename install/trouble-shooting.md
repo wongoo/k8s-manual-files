@@ -1,5 +1,7 @@
 
-# trouble shooting commands
+# trouble shooting
+
+# k8s commands
 
 ```
 watch netstat -ntlp
@@ -27,7 +29,18 @@ kubectl -n kube-system exec calico-node-xb4bf -- ping 10.96.0.1
 
 # ---- run calicoctl commands through the Pod using kubectl
 kubectl exec -ti -n kube-system calicoctl -- /calicoctl get profiles -o wide
-
 ```
 
+## check linux service log
+```
+watch netstat -ntlp
+# 如果启动失败查看详细信息
+# journalctl -xef
+```
 
+## add vip manually
+
+```
+ifconfig eth0:0 10.104.113.166 netmask 255.255.255.0 up
+# ifconfig eth0:0 down
+```

@@ -1,12 +1,11 @@
 #!/bin/sh
 
 
-export INGRESS_VIP=172.22.132.8
-
-sed -i "s/\${INGRESS_VIP}/${INGRESS_VIP}/g" addons/ingress-controller/ingress-controller-svc.yml
+sed -i "s/\${INGRESS_VIP}/${K8S_INGRESS_VIP}/g" addons/ingress-controller/ingress-controller-svc.yml
 
 kubectl create ns ingress-nginx
 kubectl apply -f addons/ingress-controller
+# kubectl delete -f addons/ingress-controller
 
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
 # kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/cloud-generic.yaml
@@ -18,7 +17,7 @@ kubectl -n ingress-nginx get po,svc
 # kubectl -n ingress-nginx logs -f xxx
 
 #  check ingress controller
-curl http://172.22.132.8:80 
+curl http://${K8S_INGRESS_VIP}
 
 # install nginx
 kubectl apply -f apps/nginx/
@@ -27,9 +26,9 @@ kubectl get po,svc,ing
 
 
 # ----> NORMAL test
-curl 172.22.132.8 -H 'Host: nginx.k8s.local'
+curl ${K8S_INGRESS_VIP} -H 'Host: nginx.k8s.local'
 
 # ----> BAD test, will get 404
-curl 172.22.132.8 -H 'Host: nginx1.k8s.local'
+curl ${K8S_INGRESS_VIP} -H 'Host: nginx1.k8s.local'
 
 

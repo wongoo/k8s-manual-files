@@ -1,12 +1,12 @@
 #!/bin/sh
 #
 
-export CNI_VERSION=v0.7.1
 export CNI_URL=https://github.com/containernetworking/plugins/releases/download
-wget "${CNI_URL}/${CNI_VERSION}/cni-plugins-amd64-${CNI_VERSION}.tgz"
+CNI_PLUGIN_FILE=cni-plugins-amd64-${K8S_CNI_VERSION}.tgz
+wget "${CNI_URL}/${K8S_CNI_VERSION}/${CNI_PLUGIN_FILE}"
 
 for NODE in $K8S_ALL; do
     ssh $NODE "mkdir -p /opt/cni/bin"
-    scp cni-plugins-amd64-${CNI_VERSION}.tgz $NODE:/opt/cni/bin/cni-plugins-amd64-${CNI_VERSION}.tgz
+    scp ${CNI_PLUGIN_FILE} $NODE:/opt/cni/bin/${CNI_PLUGIN_FILE}
     ssh $NODE "cd /opt/cni/bin ; tar -xvf cni*.tgz"
 done

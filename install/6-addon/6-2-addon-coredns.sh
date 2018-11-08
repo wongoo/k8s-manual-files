@@ -7,16 +7,12 @@
 
 #  Kubernetes 提供了 DNS 服務來作為查詢，讓 Pod 能夠以 Service 名稱作為域名來查詢 IP 位址，
 #  因此使用者就再不需要關切實際 Pod IP，而 DNS 也會根據 Pod 變化更新資源紀錄(Record resources)
+# custom DNS: https://github.com/coredns/coredns.io/blob/master/content/blog/custom-dns-and-kubernetes.md
 
 kubectl create -f addons/coredns/
 
-export COREDNS_VER=1.2.5
-
-# var for generate manifest file
-export CLUSTER_DNS_IP=10.96.0.10
-
 CURR_DIR=$(pwd)
-COREDNS_DIR=${CURR_DIR}/addons/coredns/${COREDNS_VER} 
+COREDNS_DIR=${CURR_DIR}/addons/coredns/${K8S_COREDNS_VERSION} 
 mkdir -p $COREDNS_DIR
 
 if [ -f ${COREDNS_DIR}/coredns.yaml ]; then
@@ -26,7 +22,7 @@ else
 	rm -rf temp/coredns-deployment
 	git clone --depth=1 https://github.com/coredns/deployment.git temp/coredns-deployment
 	cd temp/coredns-deployment/kubernetes
-	./deploy.sh -s -i ${CLUSTER_DNS_IP}> ${COREDNS_DIR}/coredns.yaml
+	./deploy.sh -s -i ${K8S_DNS_IP}> ${COREDNS_DIR}/coredns.yaml
 	cd ${CURR_DIR}
 fi
 
@@ -36,3 +32,10 @@ sleep 10
 
 kubectl -n kube-system get po -l k8s-app=kube-dns
 
+
+nslookup nginx.default.svc.cluster.local
+# Server:	10.96.0.10
+# Address:	10.96.0.10#53
+# 
+# Name:	nginx.default.svc.cluster.local
+# Address: 10.96.255.121

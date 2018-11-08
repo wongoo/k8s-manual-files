@@ -10,7 +10,7 @@
 # https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/kube-proxy/kube-proxy-rbac.yaml
 # command line args: https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/
 
-sh -c "sed -i 's#\${KUBE_APISERVER}#${KUBE_APISERVER}#g' addons/kube-proxy/kube-proxy-cm.yml"
+sh -c "sed -i 's#\${K8S_APISERVER}#${K8S_APISERVER}#g' addons/kube-proxy/kube-proxy-cm.yml"
 
 # see https://kubernetes.io/docs/reference/federation/extensions/v1beta1/definitions/#_v1beta1_daemonset
 

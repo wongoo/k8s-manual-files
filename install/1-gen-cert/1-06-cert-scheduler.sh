@@ -11,7 +11,7 @@ cfssl gencert \
 kubectl config set-cluster kubernetes \
     --certificate-authority=${PKI_DIR}/ca.pem \
     --embed-certs=true \
-    --server=${KUBE_APISERVER} \
+    --server=${K8S_APISERVER} \
     --kubeconfig=${K8S_DIR}/scheduler.conf
 
 kubectl config set-credentials system:kube-scheduler \

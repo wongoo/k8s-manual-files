@@ -49,7 +49,7 @@ data:
     clusters:
     - cluster:
         certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-        server: ${KUBE_APISERVER}
+        server: ${K8S_APISERVER}
       name: default
     contexts:
     - context:

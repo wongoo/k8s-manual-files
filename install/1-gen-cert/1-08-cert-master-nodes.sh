@@ -39,7 +39,7 @@ for NODE in $K8S_MASTERS; do
       kubectl config set-cluster kubernetes \
         --certificate-authority=${PKI_DIR}/ca.pem \
         --embed-certs=true \
-        --server=${KUBE_APISERVER} \
+        --server=${K8S_APISERVER} \
         --kubeconfig=${K8S_DIR}/kubelet.conf && \
       kubectl config set-credentials system:node:${NODE} \
         --client-certificate=${PKI_DIR}/kubelet.pem \

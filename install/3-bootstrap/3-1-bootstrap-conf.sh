@@ -6,7 +6,7 @@
 kubectl config set-cluster kubernetes \
   --certificate-authority=/etc/kubernetes/pki/ca.pem \
   --embed-certs=true \
-  --server=${KUBE_APISERVER} \
+  --server=${K8S_APISERVER} \
   --kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf
 
 kubectl config set-credentials tls-bootstrap-token-user \

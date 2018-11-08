@@ -8,21 +8,16 @@ grep "image: " addons/dashboard/kubernetes-dashboard.yaml
 sed -i -e "s#k8s.gcr.io/#registry.cn-hangzhou.aliyuncs.com/google_containers/#g" addons/dashboard/kubernetes-dashboard.yaml 
 
 kubectl apply -f addons/dashboard/kubernetes-kashboard.yaml
-kubectl apply -f addons/dashboard/kashboard-admin.yaml
-# anonymous dashboard
-# kubectl apply -f addons/dashboard/anonymous-proxy-rbac.yml
-# kubectl delete -f addons/dashboard/anonymous-proxy-rbac.yml
 
 
 # check service
 kubectl -n kube-system get po,svc -l k8s-app=kubernetes-dashboard
 
 # allow local access
-#kubectl proxy --address='10.104.113.165' --accept-hosts='.*'
-kubectl proxy --address='0.0.0.0' --accept-hosts='.*'
-
-http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
-#http://10.104.113.160:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+# kubectl proxy --address='0.0.0.0' --accept-hosts='.*'
+# http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+kubectl --namespace kube-system port-forward svc/kubernates-dashboard 8001
+# then access https://localhost
 
 # 在這邊會額外建立名稱為anonymous-dashboard-proxy的 Cluster Role(Binding) 
 # 來讓system:anonymous這個匿名使用者能夠透過 API Server 來 proxy 到 Kubernetes Dashboard，
@@ -31,8 +26,14 @@ http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-da
 
 # see: https://github.com/kubernetes/dashboard/wiki/Creating-sample-user
 # 建立一個 Service Account 來綁定cluster-admin 以測試功能
-kubectl -n kube-system create sa dashboard
-kubectl create clusterrolebinding dashboard --clusterrole cluster-admin --serviceaccount=kube-system:dashboard
+#kubectl -n kube-system create sa dashboard
+#kubectl create clusterrolebinding dashboard --clusterrole cluster-admin --serviceaccount=kube-system:dashboard
+kubectl apply -f addons/dashboard/dashboard-admin.yaml
+# anonymous dashboard
+# kubectl apply -f addons/dashboard/anonymous-proxy-rbac.yml
+# kubectl delete -f addons/dashboard/anonymous-proxy-rbac.yml
+
+# get token
 SECRET=$(kubectl -n kube-system get sa dashboard -o yaml | awk '/dashboard-token/ {print $3}')
 kubectl -n kube-system describe secrets ${SECRET} | awk '/token:/{print $2}'
 # 複製token然後貼到 Kubernetes dashboard

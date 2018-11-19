@@ -9,8 +9,6 @@
 #  因此使用者就再不需要關切實際 Pod IP，而 DNS 也會根據 Pod 變化更新資源紀錄(Record resources)
 # custom DNS: https://github.com/coredns/coredns.io/blob/master/content/blog/custom-dns-and-kubernetes.md
 
-kubectl create -f addons/coredns/
-
 CURR_DIR=$(pwd)
 COREDNS_DIR=${CURR_DIR}/addons/coredns/${K8S_COREDNS_VERSION} 
 mkdir -p $COREDNS_DIR

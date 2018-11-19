@@ -14,6 +14,11 @@ mkdir -p  ${MDIR}/operator
 mv  ${MDIR}/0*.yaml  ${MDIR}/operator
 ll ${MDIR}/operator
 
+# ------- remove
+# kubectl delete -f ${MDIR}
+# kubectl delete -f ${MDIR}/operator
+
+# ------- install
 kubectl apply -f ${MDIR}/operator
 kubectl -n monitoring get po,svc,ing
 

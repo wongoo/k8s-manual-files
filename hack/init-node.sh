@@ -8,6 +8,10 @@ set -eu
 : ${WITH_CTL:="false"}
 : ${WITH_CFSSL:="false"}
 
+#------------------- update hostname
+# echo "k8s-m1" > /etc/hostname
+# hostname -b k8s-m1
+
 # install docker
 yum -y remove docker docker-common docker-selinux docker-engine
 curl -fsSL "https://get.docker.com/" | sh

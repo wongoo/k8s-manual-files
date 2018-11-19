@@ -26,4 +26,8 @@ dig @${K8S_INGRESS_VIP} A nginx.k8s.local +noall +answer +time=2 +tries=1
 nslookup nginx.k8s.local
 curl nginx.k8s.local
 
+# -------------- delete
+# kubectl delete -f addons/external-dns/external-dns/
+# kubectl delete -f addons/external-dns/coredns/
+
 

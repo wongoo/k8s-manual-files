@@ -15,11 +15,11 @@ kubectl -n kube-system get po
 # including the master node, meaning that the scheduler will then be able to schedule pods everywhere.
 
 # ---- 設定 Taints and Tolerations 來讓一些特定 Pod 能夠排程到所有master節點上
-kubectl taint nodes node-role.kubernetes.io/master="":NoSchedule --all
+kubectl taint nodes node-role.kubernetes.io/master="":NoSchedule --all --overwrite=true
 
-kubectl taint nodes k8s-m1 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
-kubectl taint nodes k8s-m2 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
-kubectl taint nodes k8s-m3 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
+# kubectl taint nodes k8s-m1 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
+# kubectl taint nodes k8s-m2 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
+# kubectl taint nodes k8s-m3 node-role.kubernetes.io/master=master:NoSchedule --overwrite=true
 
 # ---- 建立一個 RBAC Role 來獲取存取權限
 kubectl apply -f master/resources/apiserver-to-kubelet-rbac.yml

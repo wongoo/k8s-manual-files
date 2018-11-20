@@ -78,8 +78,8 @@ install/5-node/5-4-nodes-config.sh
 # 2.6 addon:
 ```
 install/6-addon/6-1-addon-kube-proxy.sh
-install/6-addon/6-2-addon-coredns.sh
-install/6-addon/6-3-addon-network-calico.sh
+install/6-addon/6-2-addon-network-calico.sh
+install/6-addon/6-3-addon-coredns.sh
 install/6-addon/6-4-addon-ingress-controller.sh
 install/6-addon/6-5-addon-external-dns.sh
 install/6-addon/6-6-addon-dashboard.sh

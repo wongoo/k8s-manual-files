@@ -25,6 +25,7 @@ else
 fi
 
 kubectl create -f ${COREDNS_DIR}
+# # kubectl delete -f addons/coredns/*kubectl delete -f addons/coredns/*
 
 sleep 10
 

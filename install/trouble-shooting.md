@@ -15,7 +15,7 @@ kubectl -n kube-system get po,svc
 kubectl -n kube-system get cs
 
 # ---- get wall pod list
-kubectl get pod --all-namespaces --show-all -o wide
+kubectl get pod,svc --all-namespaces -o wide
 
 #----- check log
 kubectl -n kube-system logs -f kube-apiserver-k8s-m1
@@ -36,6 +36,19 @@ kubectl exec -ti -n kube-system calicoctl -- /calicoctl get profiles -o wide
 watch netstat -ntlp
 # 如果启动失败查看详细信息
 # journalctl -xef
+```
+
+## Apiserver Forbidden 
+
+eg, forbidden for query logs:
+```bash
+kubectl -n kube-system logs -f kube-apiserver-k8s-m1
+
+Error from server (Forbidden): Forbidden (user=kube-apiserver, verb=get, resource=nodes, subresource=proxy) ( pods/log kube-apiserver-k8s-m1)
+```
+Add `ClusterRole` and `ClusterRoleBinding` to user to grant permission:
+```
+kubectl apply -f master/resources/apiserver-to-kubelet-rbac.yml
 ```
 
 ## add vip manually

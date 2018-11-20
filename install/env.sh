@@ -31,9 +31,11 @@ export K8S_APISERVER=https://$K8S_VIP:6443
 
 # update k8s version: sed -i -e "s/v1.12.2/v1.12.2/g" **/*.sh **/*.md **/*.yml **/*.conf
 export K8S_VERSION=v1.12.2
-export K8S_CALICO_VERSION=v3.3
 export K8S_COREDNS_VERSION=1.2.5
+
+# From release note at https://docs.projectcalico.org/v3.3/releases/, calico now support cni v0.7.1
 export K8S_CNI_VERSION=v0.7.1
+export K8S_CALICO_VERSION=v3.3
 
 # update file master/manifests/etcd.yml hack/docker-images-master.sh
 export K8S_ETCD_VERSION=v3.2.24

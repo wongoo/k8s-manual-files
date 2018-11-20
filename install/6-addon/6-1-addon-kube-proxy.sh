@@ -32,4 +32,10 @@ kubectl -n kube-system get po -l k8s-app=kube-proxy
 # ---> 檢查 log 是否使用 ipvs
 # kubectl -n kube-system logs -f kube-proxy-fwgx8
 
+# ------------------
+# create a nginx service
+kubectl apply -f apps/nginx/nginx-dp.yml
+kubectl apply -f apps/nginx/nginx-svc.yml
+
+kubectl get pod,svc -o wide
 

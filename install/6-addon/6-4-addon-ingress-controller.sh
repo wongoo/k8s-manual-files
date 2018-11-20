@@ -21,6 +21,7 @@ curl http://${K8S_INGRESS_VIP}
 
 # install nginx
 kubectl apply -f apps/nginx/
+# kubectl delete -f apps/nginx
 
 kubectl get po,svc,ing
 

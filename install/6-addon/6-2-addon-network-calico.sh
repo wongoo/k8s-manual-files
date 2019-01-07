@@ -38,7 +38,7 @@ sleep 10
 # see https://docs.projectcalico.org/v2.6/getting-started/kubernetes/tutorials/using-calicoctl
 
 #  run calicoctl commands through the Pod using kubectl
-kubectl exec -ti -n kube-system calicoctl -- ping 10.96.0.1
+# kubectl exec -ti -n kube-system calicoctl -- ping 10.96.0.1
 kubectl exec -ti -n kube-system calicoctl -- /calicoctl get profiles -o wide
 
 

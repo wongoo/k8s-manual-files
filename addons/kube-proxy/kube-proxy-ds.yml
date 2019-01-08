@@ -31,7 +31,7 @@ spec:
       hostNetwork: true
       containers:
       - name: kube-proxy
-        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.12.2
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.13.1
         command:
         - kube-proxy
         - --config=/var/lib/kube-proxy/config.conf

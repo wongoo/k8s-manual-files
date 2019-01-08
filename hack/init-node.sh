@@ -34,11 +34,11 @@ sudo sed '/swap.img/d' -i /etc/fstab
 # download cni bin
 sudo mkdir -p /opt/cni/bin && cd /opt/cni/bin
 export CNI_URL="https://github.com/containernetworking/plugins/releases/download"
-sudo wget -qO --show-progress "${CNI_URL}/v0.7.1/cni-plugins-amd64-v0.7.1.tgz" | tar -zx
+sudo wget -qO --show-progress "${CNI_URL}/${K8S_CNI_VERSION}/cni-plugins-amd64-${K8S_CNI_VERSION}.tgz" | tar -zx
 
 # download kubelet and kubectl
-export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/v1.12.2/bin/linux/amd64
-sudo wget "${KUBE_URL}/kubelet" -O /usr/local/bin/kubelet
+export KUBE_URL=https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64
+sudo curl -C - -O /usr/local/bin/kubelet ${KUBE_URL}/kubelet
 sudo chmod +x /usr/local/bin/kubelet
 
 if [[ ${WITH_CTL} == "true" ]]; then

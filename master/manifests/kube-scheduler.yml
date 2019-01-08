@@ -13,7 +13,7 @@ spec:
   priorityClassName: system-cluster-critical
   containers:
   - name: kube-scheduler
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.12.2
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.13.1
     command:
       - kube-scheduler
       - --v=0

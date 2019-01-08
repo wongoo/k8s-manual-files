@@ -13,7 +13,7 @@ spec:
   priorityClassName: system-cluster-critical
   containers :
   - name: kube-apiserver
-    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.12.2
+    image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.13.1
     command:
       - kube-apiserver
       - --v=0
@@ -51,7 +51,7 @@ spec:
       - --audit-log-maxsize=128
       - --audit-log-path=/var/log/kubernetes/audit.log
       - --audit-policy-file=/etc/kubernetes/audit/policy.yml
-      - --experimental-encryption-provider-config=/etc/kubernetes/encryption/config.yml
+      - --encryption-provider-config=/etc/kubernetes/encryption/config.yml
       - --event-ttl=1h
     livenessProbe:
       failureThreshold: 8

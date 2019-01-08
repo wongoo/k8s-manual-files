@@ -28,13 +28,22 @@ export K8S_APISERVER=https://$K8S_VIP:6443
 # ---------------------------
 #    Versions
 # ---------------------------
+# check versions of dependencies of k8s: 
+#     https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#external-dependencies
+#     https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#changelog-since-v1130
+#
+# update k8s version: sed -i -e "s/v1.13.1/v1.13.1/g" **/*.sh **/*.md **/*.yml **/*.conf
+export K8S_VERSION=v1.13.1
+export K8S_COREDNS_VERSION=v1.2.6
 
-# update k8s version: sed -i -e "s/v1.12.2/v1.12.2/g" **/*.sh **/*.md **/*.yml **/*.conf
-export K8S_VERSION=v1.12.2
-export K8S_COREDNS_VERSION=1.2.5
+# sed -i "" -e "s/defaultbackend-amd64:1.4/defaultbackend-amd64:1.5/g" **/*.yml
+export K8S_DEFAULTBACKEND_VERSION=1.5
+export K8S_DASHBOARD_VERSION=v1.10.0
+export K8S_PAUSEAMD_VERSION=3.1
 
 # From release note at https://docs.projectcalico.org/v3.3/releases/, calico now support cni v0.7.1
-export K8S_CNI_VERSION=v0.7.1
+export K8S_CNI_VERSION=v0.6.0
+# NOTE this calico version is the minor version
 export K8S_CALICO_VERSION=v3.3
 
 # update file master/manifests/etcd.yml hack/docker-images-master.sh
